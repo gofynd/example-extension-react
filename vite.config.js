@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 import react from "@vitejs/plugin-react";
 import { config as loadEnv } from 'dotenv';
 import path from 'path';
-loadEnv({ path: path.resolve(__dirname,'../', '.env') });
+loadEnv({ path: path.resolve(__dirname,'..', '..', '.env') });
 
 const proxyOptions = {
   target: `http://127.0.0.1:${process.env.BACKEND_PORT}`,
