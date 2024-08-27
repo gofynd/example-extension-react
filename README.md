@@ -13,11 +13,8 @@ Below is the structure of the project directory along with brief descriptions of
 .
 ├── App.jsx                   # The main React component
 ├── README.md                 # Project documentation
-├── assets                    # Static assets such as images and fonts
-├── components                # React components
 ├── dev_embed.js              # Script for embedding in development
 ├── fdk.ext.config.json       # Configuration file for FDK extension
-├── helper                    # Helper functions and utilities
 ├── index.html                # Main HTML file
 ├── index.jsx                 # Entry point for the React application
 ├── jest.config.mjs           # Jest configuration for unit tests
@@ -28,11 +25,7 @@ Below is the structure of the project directory along with brief descriptions of
 │   ├── NotFound.jsx          # 404 Not Found page component
 │   └── style                 # Styles for page components
 ├── public                    # Public assets
-├── router                    # React Router configuration
-│   ├── guard.js              # Route guards
-│   └── index.jsx             # Router setup and routes definition
-├── services                  # Services for API calls and business logic
-│   └── product.service.js    # Service for product-related API calls
+├── router.js                 # React Router configuration
 ├── test                      # Test files and configurations
 └── vite.config.js            # Vite configuration file contains the configuration for Vite, including server setup and proxy settings.
 

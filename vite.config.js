@@ -39,6 +39,9 @@ export default defineConfig({
   resolve: {
     preserveSymlinks: true,
   },
+  build: {
+    outDir: 'public/dist'
+  },
   server: {
     host: "localhost",
     port: process.env.FRONTEND_PORT,
