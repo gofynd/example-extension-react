@@ -138,3 +138,14 @@ body {
   color: #2e31be;
   margin-left: 2px;
 }
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader img {
+  height: 100px
+}

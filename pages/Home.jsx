@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import "./style/home.css";
-import Loader from "../components/Loader";
-import ProductService from "../services/product.service";
-import greenDot from "../assets/green-dot.svg";
-import grayDot from "../assets/grey-dot.svg";
-import DEFAULT_NO_IMAGE from "../assets/default_icon_listing.png";
+import greenDot from "../public/assets/green-dot.svg";
+import grayDot from "../public/assets/grey-dot.svg";
+import DEFAULT_NO_IMAGE from "../public/assets/default_icon_listing.png";
+import loaderGif from "../public/assets/loader.gif";
+import axios from "axios";
+import urlJoin from "url-join";
+
+const EXAMPLE_MAIN_URL = window.location.origin;
 
 export const Home = () => {
   const [pageLoading, setPageLoading] = useState(false);
   const [productList, setProductList] = useState([]);
   const DOC_URL_PATH = "/help/docs/sdk/latest/platform/company/catalog/#getProducts";
   const DOC_APP_URL_PATH = "/help/docs/sdk/latest/platform/application/catalog#getAppProducts";
-  const { application_id } = useParams();
+  const { application_id, company_id } = useParams();
   const documentationUrl ='https://api.fynd.com'
   
   useEffect(() => {
@@ -22,7 +25,11 @@ export const Home = () => {
   const fetchProducts = async () => {
     setPageLoading(true);
     try {
-      const { data } = await ProductService.getAllProducts();
+      const { data } = await axios.get(urlJoin(EXAMPLE_MAIN_URL, '/api/products'),{
+        headers: {
+          "x-company-id": company_id,
+        }
+      });
       setProductList(data.items);
     } catch (e) {
       console.error("Error fetching products:", e);
@@ -34,7 +41,11 @@ export const Home = () => {
   const fetchApplicationProducts = async () => {
     setPageLoading(true);
     try {
-      const { data } = await ProductService.getAllApplicationProducts({ application_id });
+      const { data } = await axios.get(urlJoin(EXAMPLE_MAIN_URL, `/api/products/application/${application_id}`),{
+        headers: {
+          "x-company-id": company_id,
+        }
+      })
       setProductList(data.items);
     } catch (e) {
       console.error("Error fetching application products:", e);
@@ -63,7 +74,9 @@ export const Home = () => {
   return (
     <>
       {pageLoading ? (
-        <Loader />
+        <div className="loader" data-testid="loader">
+          <img src={loaderGif} alt="loader GIF" />
+        </div>
       ) : (
         <div className="products-container">
           <div className="title">
