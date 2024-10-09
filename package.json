@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@gofynd/fdk-client-javascript": "^1.3.5",
+    "@gofynd/fdk-client-javascript": "^1.4.13",
     "axios": "^1.2.1",
     "cookie-parser": "^1.4.6",
     "react": "^18.2.0",
