@@ -1,4 +1,4 @@
- import { defineConfig } from "vite";
+import { defineConfig } from "vite";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import react from "@vitejs/plugin-react";
@@ -50,6 +50,7 @@ export default defineConfig({
       "^/api(/|(\\?.*)?$)": proxyOptions,
       "^/fp(/|(\\?.*)?$)": proxyOptions,
      "^/adm(/|(\\?.*)?$)": proxyOptions,
+     "^/billing(/|(\\?.*)?$)": proxyOptions, // Add billing routes
     },
   },
 });
