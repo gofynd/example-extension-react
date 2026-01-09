@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 import react from "@vitejs/plugin-react";
 
 const proxyOptions = {
-  target: `http://127.0.0.1:${process.env.BACKEND_PORT}`,
+  target: `http://127.0.0.1:${process.env.BACKEND_PORT || 8080}`,
   changeOrigin: false,
   secure: true,
   ws: false,
@@ -44,7 +44,7 @@ export default defineConfig({
   },
   server: {
     host: "localhost",
-    port: process.env.FRONTEND_PORT,
+    port: process.env.FRONTEND_PORT || 5173,
     proxy: {
       "^/(\\?.*)?$": proxyOptions,
       "^/api(/|(\\?.*)?$)": proxyOptions,
