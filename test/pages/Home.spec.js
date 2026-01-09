@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter as Router, Route, Routes, MemoryRouter } from 'react-router-dom';
 import { Home } from '../../pages/Home';
 import axios from 'axios'
@@ -35,7 +34,7 @@ const mockProducts = {
 
 const renderHomeWithParams = () => {
   return render(
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
         <Route path="/:application_id?" element={<Home />} />
       </Routes>
@@ -59,9 +58,10 @@ describe('Test Home component', () => {
     jest.clearAllMocks();
   });
 
-  test('Renders loader when page is loading', () => {
-    const { getByTestId } = renderHomeWithParams({});
+  test('Renders loader when page is loading', async () => {
+    const { getByTestId, findByText } = renderHomeWithParams({});
     expect(getByTestId('loader')).toBeInTheDocument();
+    await findByText('Product 1');
   });
 
   test('It should render product list for company', async () => {
@@ -77,7 +77,7 @@ describe('Test Home component', () => {
 
   test('It should render product list for sales channel', async () => {
     const { getByTestId, getByText } = render(
-      <MemoryRouter initialEntries={['/application/000000000000000000000001']}>
+      <MemoryRouter initialEntries={['/application/000000000000000000000001']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Routes>
           <Route path="/application/:application_id" element={<Home />} />
         </Routes>

@@ -4,7 +4,11 @@ export default {
   moduleFileExtensions: ["js", "jsx", "json", "node"],
   testMatch: ["**/test/**/*.+(js|jsx|ts|tsx)", "**/?(*.)+(spec|test).+(js|jsx|ts|tsx)"],
   transformIgnorePatterns: [
-    "/node_modules/(?!url-join)" // Exclude everything except url-join
+    "/node_modules/(?!url-join)/"
+  ],
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "/test/setup.js"
   ],
   transform: {
     "^.+\\.(js|jsx)$": "babel-jest", // Use Babel for JavaScript and JSX files
@@ -25,4 +29,5 @@ export default {
     "!**/dist/**",
   ],
   clearMocks: true,
+  setupFilesAfterEnv: ['./test/setup.js'],
 };
