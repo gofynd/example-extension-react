@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import "./style/home.css";
-import greenDot from "../public/assets/green-dot.svg";
-import grayDot from "../public/assets/grey-dot.svg";
-import DEFAULT_NO_IMAGE from "../public/assets/default_icon_listing.png";
-import loaderGif from "../public/assets/loader.gif";
+import greenDot from "../assets/green-dot.svg";
+import grayDot from "../assets/grey-dot.svg";
+import DEFAULT_NO_IMAGE from "../assets/default_icon_listing.png";
+import loaderGif from "../assets/loader.gif";
 import axios from "axios";
 import urlJoin from "url-join";
 
@@ -20,7 +20,7 @@ export const Home = () => {
   
   useEffect(() => {
     isApplicationLaunch() ? fetchApplicationProducts() : fetchProducts();
-  }, [application_id]);
+  }, [application_id, company_id]);
 
   const fetchProducts = async () => {
     setPageLoading(true);
