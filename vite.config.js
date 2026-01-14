@@ -45,6 +45,7 @@ export default defineConfig({
   server: {
     host: "localhost",
     port: process.env.FRONTEND_PORT || 5173,
+    allowedHosts: true,
     proxy: {
       "^/(\\?.*)?$": proxyOptions,
       "^/api(/|(\\?.*)?$)": proxyOptions,
