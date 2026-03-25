@@ -34,3 +34,5 @@ Below is the structure of the project directory along with brief descriptions of
 [coveralls-badge]: https://coveralls.io/repos/github/gofynd/example-extension-react/badge.svg?branch=main&&kill_cache=1
 [coveralls-url]: https://coveralls.io/github/gofynd/example-extension-react?branch=main
 
+## Environment Variables
+- Never commit `.env` or any file that contains real environment variables and secrets; use `.env.example` (with placeholder values only) for documentation in the repository.
